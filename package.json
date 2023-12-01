@@ -1,0 +1,13 @@
+{
+  "name": "advent_of_code_2023",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:LyryKua/advent_of_code_2023.git",
+  "author": "Kyrylo Hrecheniuk a.k.a Zhytomyr Wild",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "d01": "node ./d01/index.js"
+  },
+  "type": "module"
+}
