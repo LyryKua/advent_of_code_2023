@@ -8,6 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "d01": "node ./d01/index.js",
+    "d02": "node ./d02/part1.js && node ./d02/part2.js",
     "d02:part1": "node ./d02/part1.js",
     "d02:part2": "node ./d02/part2.js"
   },

@@ -50,6 +50,7 @@ function main(input) {
   }).reduce((acc, cur) => acc + cur)
 }
 
+console.log('\npart2:')
 const exampleResult = main(example)
 console.log('example:', exampleResult, exampleResult === 2286)
 console.log('answer:', main(input))

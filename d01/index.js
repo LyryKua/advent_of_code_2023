@@ -53,6 +53,7 @@ function main(input) {
   return lines.map(parseLine).reduce((acc, cur) => acc + cur, 0)
 }
 
+console.log('--- Day 1: Trebuchet?! ---')
 console.log('\npart1:')
 const examplePart1Result = main(examplePart1)
 console.log('example:', examplePart1Result, examplePart1Result === 142)

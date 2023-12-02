@@ -54,6 +54,8 @@ function main(input) {
   }).reduce((acc, cur) => acc + cur)
 }
 
+console.log('--- Day 2: Cube Conundrum ---')
+console.log('\npart1:')
 const exampleResult = main(example)
 console.log('example:', exampleResult, exampleResult === 8)
 console.log('answer:', main(input))
