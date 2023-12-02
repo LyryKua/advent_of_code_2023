@@ -13,3 +13,9 @@ $ npm run d01
 ```bash
 $ npm run d02
 ```
+
+### [Day 3: ???](https://adventofcode.com/2023/day/3)
+
+```bash
+$ npm run d03
+```

@@ -10,7 +10,8 @@
     "d01": "node ./d01/index.js",
     "d02": "node ./d02/part1.js && node ./d02/part2.js",
     "d02:part1": "node ./d02/part1.js",
-    "d02:part2": "node ./d02/part2.js"
+    "d02:part2": "node ./d02/part2.js",
+    "d03": "node ./d03/part1.js"
   },
   "type": "module"
 }
