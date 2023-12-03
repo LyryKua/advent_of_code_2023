@@ -1,4 +1,4 @@
-import { example, input } from './input.js'
+import { example } from './input.js'
 import { parseInput } from '../lib/index.js'
 
 /**
@@ -8,7 +8,173 @@ import { parseInput } from '../lib/index.js'
 function isNumber(char) {
   return char === '0' || char === '1' || char === '2' || char === '3' || char === '4' || char === '5' || char === '6'
     || char === '7' || char === '8' || char === '9'
+}
 
+/**
+ * @param char {string}
+ * @returns {boolean}
+ */
+function isStar(char) {
+  return char === '*'
+}
+
+/**
+ * @param lines {string[]}
+ * @param x {number}
+ * @param y {number}
+ * @returns {boolean}
+ */
+function isLeftTouchNumber(lines, x, y) {
+  const targetChar = lines[y][x - 1] ?? '.'
+
+  return isNumber(targetChar)
+}
+
+/**
+ * @param lines {string[]}
+ * @param x {number}
+ * @param y {number}
+ * @returns {boolean}
+ */
+function isRightTouchNumber(lines, x, y) {
+  const targetChar = lines[y][x + 1] ?? '.'
+
+  return isNumber(targetChar)
+}
+
+/**
+ * @param lines {string[]}
+ * @param x {number}
+ * @param y {number}
+ * @returns {boolean}
+ */
+function isTopTouchNumber(lines, x, y) {
+  const targetChar = lines[y - 1]?.[x] ?? '.'
+
+  return isNumber(targetChar)
+}
+
+/**
+ * @param lines {string[]}
+ * @param x {number}
+ * @param y {number}
+ * @returns {boolean}
+ */
+function isLeftTopTouchNumber(lines, x, y) {
+  const targetChar = lines[y - 1]?.[x - 1] ?? '.'
+
+  return isNumber(targetChar)
+}
+
+/**
+ * @param lines {string[]}
+ * @param x {number}
+ * @param y {number}
+ * @returns {boolean}
+ */
+function isRightTopTouchNumber(lines, x, y) {
+  const targetChar = lines[y - 1]?.[x + 1] ?? '.'
+
+  return isNumber(targetChar)
+}
+
+/**
+ * @param lines {string[]}
+ * @param x {number}
+ * @param y {number}
+ * @returns {boolean}
+ */
+function isAnyTopTouchNumber(lines, x, y) {
+  return isTopTouchNumber(lines, x, y) || isLeftTopTouchNumber(lines, x, y) || isRightTopTouchNumber(lines, x, y)
+}
+
+/**
+ * @param lines {string[]}
+ * @param x {number}
+ * @param y {number}
+ * @returns {boolean}
+ */
+function isLeftBottomTouchNumber(lines, x, y) {
+  const targetChar = lines[y + 1]?.[x - 1] ?? '.'
+
+  return isNumber(targetChar)
+}
+
+/**
+ * @param lines {string[]}
+ * @param x {number}
+ * @param y {number}
+ * @returns {boolean}
+ */
+function isBottomTouchNumber(lines, x, y) {
+  const targetChar = lines[y + 1]?.[x] ?? '.'
+
+  return isNumber(targetChar)
+}
+
+/**
+ * @param lines {string[]}
+ * @param x {number}
+ * @param y {number}
+ * @returns {boolean}
+ */
+function isRightBottomTouchNumber(lines, x, y) {
+  const targetChar = lines[y + 1]?.[x + 1] ?? '.'
+
+  return isNumber(targetChar)
+}
+
+/**
+ * @param lines {string[]}
+ * @param x {number}
+ * @param y {number}
+ * @returns {boolean}
+ */
+function isAnyBottomTouchNumber(lines, x, y) {
+  return isBottomTouchNumber(lines, x, y) || isLeftBottomTouchNumber(lines, x, y) || isRightBottomTouchNumber(lines, x, y)
+}
+
+/**
+ * @param lines {string[]}
+ * @param x {number}
+ * @param y {number}
+ * @returns {boolean}
+ */
+function isTouchTwoNumbers(lines, x, y) {
+  const left = isLeftTouchNumber(lines, x, y)
+  const right = isRightTouchNumber(lines, x, y)
+  const top = isTopTouchNumber(lines, x, y)
+  const leftTop = isLeftTopTouchNumber(lines, x, y)
+  const rightTop = isRightTopTouchNumber(lines, x, y)
+  const bottom = isBottomTouchNumber(lines, x, y)
+  const leftBottom = isLeftBottomTouchNumber(lines, x, y)
+  const rightBottom = isRightBottomTouchNumber(lines, x, y)
+
+  const anyTop = leftTop || top || rightTop
+  const anyBottom = leftBottom || bottom || rightBottom
+
+  if (left && anyTop) {
+    return true
+  }
+  if (left && anyBottom) {
+    return true
+  }
+  if (left && right) {
+    return true
+  }
+  if (right && anyTop) {
+    return true
+  }
+  if (right && anyBottom) {
+    return true
+  }
+  if (anyTop && anyBottom) {
+    return true
+  }
+  if (leftTop && rightTop) {
+    return true
+  }
+  return leftBottom && rightBottom
 }
 
 /**
@@ -37,7 +203,79 @@ function getNumber(line, startPosition) {
     }
   }
 
-  return line.slice(startPosition, length + startPosition)
+  let s = line.slice(startPosition, length + startPosition)
+  console.log('fromstart', s)
+  return s
+}
+
+/**
+ * @param line {string}
+ * @param endPosition {number}
+ * @returns {string}
+ */
+function getNumberFromEnd(line, endPosition) {
+  let length = 0
+
+  for (let i = endPosition; i >= 0; i--) {
+    const char = line[i]
+
+    if (isNumber(char)) {
+      length += 1
+    } else {
+      break
+    }
+  }
+
+  let s = line.slice(endPosition - length + 1, endPosition + 1)
+  console.log('fromend', s)
+  return s
+}
+
+/**
+ * @param line {string}
+ * @param position {number}
+ * @returns {string}
+ */
+function getNumberFromMiddle(line, position) {
+  let start = position
+  let end = position
+
+  for (let i = position; i >= 0; i--) {
+    const char = line[i]
+
+    if (isNumber(char)) {
+      start = i
+    } else {
+      break
+    }
+  }
+  for (let i = position; i < line.length; i++) {
+    const char = line[i]
+
+    if (isNumber(char)) {
+      end = i
+    } else {
+      break
+    }
+  }
+
+  let s = line.slice(start, end + 1)
+  console.log('midle', s)
+  return s
+}
+
+/**
+ * @param line {string}
+ * @param start {number}
+ * @returns {string[]}
+ */
+function tmp(line, start) {
+  if (isNumber(line[start - 1])) {
+    const it = getNumberFromEnd(line, start)
+  } else if (isNumber(line[start + 1])) {
+
+    return []
+  }
 }
 
 /**
@@ -74,7 +312,7 @@ function isNumberAdjacent(lines, numberLength, x, y) {
  * @param input {string}
  * @return {number}
  */
-function main(input) {
+function part1(input) {
   const lines = parseInput(input)
   const x = lines[0].length
   const y = lines.length
@@ -97,8 +335,35 @@ function main(input) {
   return answer
 }
 
+/**
+ * @param input {string}
+ * @return {number}
+ */
+function part2(input) {
+  const lines = parseInput(input)
+  const x = lines[0].length
+  const y = lines.length
+  let answer = 0
+
+  for (let j = 0; j < y; j++) {
+    for (let i = 0; i < x; i++) {
+      const char = lines[j][i]
+      if (isStar(char) && isTouchTwoNumbers(lines, i, j)) {
+        console.log('***')
+      }
+    }
+  }
+  return answer
+}
+
+
 console.log('--- Day 3: Gear Ratios ---')
-console.log('\npart1:')
-const exampleResult = main(example)
-console.log('example:', exampleResult, exampleResult === 4361)
-console.log('answer:', main(input))
+// console.log('\npart1:')
+// const examplePart1Result = part1(example)
+// console.log('example:', examplePart1Result, examplePart1Result === 4361)
+// console.log('answer:', part1(input))
+//
+console.log('\npart2:')
+const examplePart2Result = part2(example)
+console.log('example:', examplePart2Result, examplePart2Result === 467835)
+// console.log('answer:', part2(input))
