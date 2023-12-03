@@ -1,4 +1,4 @@
-import { example } from './input.js'
+import { example, input } from './input.js'
 import { parseInput } from '../lib/index.js'
 
 /**
@@ -203,9 +203,7 @@ function getNumber(line, startPosition) {
     }
   }
 
-  let s = line.slice(startPosition, length + startPosition)
-  console.log('fromstart', s)
-  return s
+  return line.slice(startPosition, length + startPosition)
 }
 
 /**
@@ -226,9 +224,7 @@ function getNumberFromEnd(line, endPosition) {
     }
   }
 
-  let s = line.slice(endPosition - length + 1, endPosition + 1)
-  console.log('fromend', s)
-  return s
+  return line.slice(endPosition - length + 1, endPosition + 1)
 }
 
 /**
@@ -259,9 +255,7 @@ function getNumberFromMiddle(line, position) {
     }
   }
 
-  let s = line.slice(start, end + 1)
-  console.log('midle', s)
-  return s
+  return line.slice(start, end + 1)
 }
 
 /**
@@ -269,13 +263,30 @@ function getNumberFromMiddle(line, position) {
  * @param start {number}
  * @returns {string[]}
  */
-function tmp(line, start) {
-  if (isNumber(line[start - 1])) {
-    const it = getNumberFromEnd(line, start)
-  } else if (isNumber(line[start + 1])) {
-
-    return []
+function numbersFromLine(line, start) {
+  const isFirstNumber = isNumber(line[start - 1])
+  const isSecondNumber = isNumber(line[start])
+  const isThirdNumber = isNumber(line[start + 1])
+  if (
+    isFirstNumber && isSecondNumber && isThirdNumber
+    || !isFirstNumber && isSecondNumber && isThirdNumber
+    || isFirstNumber && isSecondNumber && !isThirdNumber) {
+    return [getNumberFromMiddle(line, start)]
   }
+  if (isFirstNumber && !isSecondNumber && !isThirdNumber) {
+    return [getNumberFromEnd(line, start - 1)]
+  }
+  if (!isFirstNumber && !isSecondNumber && isThirdNumber) {
+    return [getNumber(line, start + 1)]
+  }
+  if (isSecondNumber) {
+    return [getNumberFromMiddle(line, start)]
+  }
+  if (isFirstNumber && !isSecondNumber && isThirdNumber) {
+    return [getNumberFromEnd(line, start - 1), getNumber(line, start + 1)]
+  }
+
+  return []
 }
 
 /**
@@ -349,7 +360,22 @@ function part2(input) {
     for (let i = 0; i < x; i++) {
       const char = lines[j][i]
       if (isStar(char) && isTouchTwoNumbers(lines, i, j)) {
-        console.log('***')
+        const numbers = []
+        if (isAnyTopTouchNumber(lines, i, j)) {
+          numbers.push(...numbersFromLine(lines[j - 1], i))
+        }
+        if (isAnyBottomTouchNumber(lines, i, j)) {
+          numbers.push(...numbersFromLine(lines[j + 1], i))
+        }
+        if (isLeftTouchNumber(lines, i, j)) {
+          numbers.push(...numbersFromLine(lines[j], i - 1))
+        }
+        if (isRightTouchNumber(lines, i, j)) {
+          numbers.push(...numbersFromLine(lines[j], i + 1))
+        }
+        if (numbers.length === 2) {
+          answer += parseInt(numbers[0]) * parseInt(numbers[1])
+        }
       }
     }
   }
@@ -358,12 +384,12 @@ function part2(input) {
 
 
 console.log('--- Day 3: Gear Ratios ---')
-// console.log('\npart1:')
-// const examplePart1Result = part1(example)
-// console.log('example:', examplePart1Result, examplePart1Result === 4361)
-// console.log('answer:', part1(input))
-//
+console.log('\npart1:')
+const examplePart1Result = part1(example)
+console.log('example:', examplePart1Result, examplePart1Result === 4361)
+console.log('answer:', part1(input))
+
 console.log('\npart2:')
 const examplePart2Result = part2(example)
 console.log('example:', examplePart2Result, examplePart2Result === 467835)
-// console.log('answer:', part2(input))
+console.log('answer:', part2(input))
