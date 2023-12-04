@@ -19,3 +19,9 @@ $ npm run d02
 ```bash
 $ npm run d03
 ```
+
+### [--- Day 4: Scratchcards ---](https://adventofcode.com/2023/day/4)
+
+```bash
+$ npm run d04
+```
