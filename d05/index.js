@@ -1,4 +1,4 @@
-import { example } from './input.js'
+import { example, input } from './input.js'
 
 /**
  * @param input {string}
@@ -20,6 +20,35 @@ function parseSeeds(input) {
 }
 
 /**
+ * @param x {number}
+ * @param origin {number}
+ * @param target {number}
+ * @param period {number}
+ * @returns {number}
+ */
+function originToTarget(x, target, origin, period) {
+  const delta = target - origin
+  const originMax = origin + period
+  const y = x + delta
+
+  if (origin <= x && x < originMax) {
+    return y
+  }
+  return x
+}
+
+/**
+ * @param x {number}
+ * @param map {number[][]}
+ * @returns {number}
+ */
+function oneToAnother(x, map) {
+  const soils = map.map(row => originToTarget(x, ...row)).filter(it => it !== x)
+
+  return soils.length === 1 ? soils[0] : x
+}
+
+/**
  * @param input {string}
  * @returns {number}
  */
@@ -35,18 +64,19 @@ function part1(input) {
     humidityToLocationMap,
   } = parseSeeds(input)
 
-  console.log('seeds:', seeds)
-  console.log('seedToSoilMap:', seedToSoilMap)
-  console.log('soilToFertilizerMap:', soilToFertilizerMap)
-  console.log('fertilizerToWaterMap:', fertilizerToWaterMap)
-  console.log('waterToLightMap:', waterToLightMap)
-  console.log('lightToTemperatureMap:', lightToTemperatureMap)
-  console.log('temperatureToHumidityMap:', temperatureToHumidityMap)
-  console.log('humidityToLocationMap:', humidityToLocationMap)
-  return 0
+  const soils = seeds.map(seed => oneToAnother(seed, seedToSoilMap))
+  const fertilizers = soils.map(soil => oneToAnother(soil, soilToFertilizerMap))
+  const waters = fertilizers.map(fertilizer => oneToAnother(fertilizer, fertilizerToWaterMap))
+  const lights = waters.map(water => oneToAnother(water, waterToLightMap))
+  const temperatures = lights.map(light => oneToAnother(light, lightToTemperatureMap))
+  const humidities = temperatures.map(temperature => oneToAnother(temperature, temperatureToHumidityMap))
+  const locations = humidities.map(humidity => oneToAnother(humidity, humidityToLocationMap))
+
+  return Math.min(...locations)
 }
 
 console.log('--- Day 5: If You Give A Seed A Fertilizer ---')
 console.log('\npart1:')
 const examplePart1Result = part1(example)
 console.log('example:', examplePart1Result, examplePart1Result === 35)
+console.log('answer:', part1(input))
