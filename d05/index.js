@@ -114,7 +114,6 @@ function part2(input) {
     temperatureToHumidityMap,
     humidityToLocationMap,
   } = parseSeedsPart2(input)
-  console.log(seeds)
 
   const soils = seeds.map(seed => oneToAnother(seed, seedToSoilMap))
   const fertilizers = soils.map(soil => oneToAnother(soil, soilToFertilizerMap))
