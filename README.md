@@ -29,9 +29,8 @@ $ npm run d04
 ### [--- Day 5: If You Give A Seed A Fertilizer ---](https://adventofcode.com/2023/day/5)
 
 > [!NOTE]
-> This one is a bit slow. Be patient, I waited 1 hour and 41 minutes for the part 2.
+> Part 2 is a bit slow. Be patient, I waited 1 hour and 41 minutes for the answer.
 
-![img.png](assets/img.png)
 ```bash
 $ npm run d04
 ```
