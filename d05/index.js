@@ -23,12 +23,12 @@ function parseSeeds(input) {
  * @param x {number}
  * @param origin {number}
  * @param target {number}
- * @param period {number}
+ * @param range {number}
  * @returns {number}
  */
-function originToTarget(x, target, origin, period) {
+function originToTarget(x, target, origin, range) {
   const delta = target - origin
-  const originMax = origin + period
+  const originMax = origin + range
   const y = x + delta
 
   if (origin <= x && x < originMax) {
