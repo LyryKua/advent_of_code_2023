@@ -25,3 +25,9 @@ $ npm run d03
 ```bash
 $ npm run d04
 ```
+
+### [--- Day 5: If You Give A Seed A Fertilizer ---](https://adventofcode.com/2023/day/5)
+
+```bash
+$ npm run d04
+```
