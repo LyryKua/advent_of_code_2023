@@ -32,5 +32,11 @@ $ npm run d04
 > Part 2 is a bit slow. Be patient, I waited 1 hour and 41 minutes for the answer.
 
 ```bash
-$ npm run d04
+$ npm run d05
+```
+
+### [--- Day 6: Wait For It ---](https://adventofcode.com/2023/day/6)
+
+```bash
+$ npm run d06
 ```

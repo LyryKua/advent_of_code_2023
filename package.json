@@ -19,7 +19,8 @@
     "d02:part2": "node ./d02/part2.js",
     "d03": "node d03/index.js",
     "d04": "node d04/index.js",
-    "d05": "node d05/index.js"
+    "d05": "node d05/index.js",
+    "d06": "node d06/index.js"
   },
   "type": "module"
 }
