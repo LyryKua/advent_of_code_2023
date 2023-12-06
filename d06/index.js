@@ -29,15 +29,6 @@ function parseInputPart2(input) {
 }
 
 /**
- * @param params {{time: number, distance: number}}
- * @param x {number}
- * @returns {number}
- */
-function calculateDistance(x, { time, distance }) {
-  return x * (time - x)
-}
-
-/**
  * @param input {{time: number, distance: number}[]}
  * @returns {number}
  */
@@ -46,7 +37,7 @@ function main(input) {
   for (const race of input) {
     let winCounter = 0
     for (let i = 0; i < race.time; i++) {
-      const distance = calculateDistance(i, race)
+      const distance = i * (race.time - i)
       if (distance > race.distance) {
         winCounter += 1
       }
