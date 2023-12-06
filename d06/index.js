@@ -37,11 +37,10 @@ function main(input) {
   let answer = 1
   for (const { time, distance } of input) {
     const discriminant = time * time - 4 * distance
-    const x1 = (time + Math.sqrt(discriminant)) / 2
-    const x2 = (time - Math.sqrt(discriminant)) / 2
-    console.log({ x1, x2 })
-    const winCounter = x2 - x1
-    answer *= winCounter
+    const x1 = Math.floor((time - Math.sqrt(discriminant)) / 2)
+    const x2 = Math.ceil((time + Math.sqrt(discriminant)) / 2)
+
+    answer *= (x2 - x1 - 1)
   }
 
   return answer
@@ -54,8 +53,9 @@ console.log('example:', examplePart1Result, examplePart1Result === 288)
 const part1Result = main(parseInputPart1(input))
 console.log('answer:', part1Result, part1Result === 633080)
 
-// console.log('\npart2:')
-// const examplePart2Result = main(parseInputPart2(example))
-// console.log('example:', examplePart2Result, examplePart2Result === 71503)
-// const part2Result = main(parseInputPart2(input))
-// console.log('answer:', part2Result, part2Result === 20048741)
+console.log('\npart2:')
+const examplePart2Result = main(parseInputPart2(example))
+console.log('example:', examplePart2Result, examplePart2Result === 71503)
+const part2Result = main(parseInputPart2(input))
+console.log('answer:', part2Result, part2Result === 20048741)
+//
