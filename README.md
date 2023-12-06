@@ -1,8 +1,16 @@
 # 🎄 Advent of Code 2023 🎄
-[![AoC](https://badgen.net/badge/AoC/2023/blue)](https://adventofcode.com/2023)
-[![Node](https://badgen.net/badge/Node/v20.10.0+/green)](https://nodejs.org/en/download/)
-![Language](https://badgen.net/badge/Language/JavaScript/yellow)
-[![License](https://badgen.net/github/license/LyryKua/advent_of_code_2023)](./LICENSE)
+[![AoC][aoc-badge]][aoc]
+[![Node][node-badge]][node]
+![Language][language-badge]
+[![License][license-badge]][license]
+
+[aoc-badge]: https://badgen.net/badge/AoC/2023/blue
+[aoc]: https://adventofcode.com/2023
+[node-badge]: https://badgen.net/badge/Node/v20.10.0+/green
+[node]: https://nodejs.org/en/download/
+[language-badge]: https://badgen.net/badge/Language/JavaScript/yellow
+[license-badge]: https://badgen.net/github/license/LyryKua/advent_of_code_2023
+[license]: ./LICENSE
 
 ## Solutions
 
@@ -12,7 +20,7 @@
 [![Day](https://badgen.net/badge/04/%E2%98%85%E2%98%85/green)](./d04)
 [![Day](https://badgen.net/badge/05/%E2%98%85%E2%98%85/green)](./d05)
 [![Day](https://badgen.net/badge/06/%E2%98%85%E2%98%85/green)](./d06)
-![Day](https://badgen.net/badge/07/%E2%98%86%E2%98%86/gray)
+![Day](https://badgen.net/badge/07/%E2%98%86%E2%98%86/gray')
 ![Day](https://badgen.net/badge/08/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/09/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/10/%E2%98%86%E2%98%86/gray)

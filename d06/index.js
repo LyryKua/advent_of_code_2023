@@ -58,4 +58,3 @@ const examplePart2Result = main(parseInputPart2(example))
 console.log('example:', examplePart2Result, examplePart2Result === 71503)
 const part2Result = main(parseInputPart2(input))
 console.log('answer:', part2Result, part2Result === 20048741)
-//
