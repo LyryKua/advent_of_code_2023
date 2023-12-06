@@ -1,4 +1,5 @@
 import { example, input } from './input.js'
+import { part1 } from '../d01/input.js'
 
 /**
  * @param input {string}
@@ -52,9 +53,11 @@ console.log('--- Day 6: Wait For It ---')
 console.log('\npart1:')
 const examplePart1Result = main(parseInputPart1(example))
 console.log('example:', examplePart1Result, examplePart1Result === 288)
-console.log('answer:', main(parseInputPart1(input)))
+const part1Result = main(parseInputPart1(input))
+console.log('answer:', part1Result, part1Result === 633080)
 
 console.log('\npart2:')
 const examplePart2Result = main(parseInputPart2(example))
 console.log('example:', examplePart2Result, examplePart2Result === 71503)
-console.log('answer:', main(parseInputPart2(input)))
+const part2Result = main(parseInputPart2(input))
+console.log('answer:', part2Result, part2Result === 20048741)
