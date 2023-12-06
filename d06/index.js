@@ -1,5 +1,4 @@
 import { example, input } from './input.js'
-import { part1 } from '../d01/input.js'
 
 /**
  * @param input {string}
