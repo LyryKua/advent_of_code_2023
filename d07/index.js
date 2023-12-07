@@ -11,7 +11,7 @@ function main(input) {
 console.log('--- Day 7: Camel Cards ---')
 console.log('\npart2:')
 const examplePart1Result = main(example)
-console.log('example:', examplePart1Result, examplePart1Result === 288)
+console.log('example:', examplePart1Result, examplePart1Result === 6440)
 const part1Result = main(example)
 console.log('answer:', part1Result)
 //
