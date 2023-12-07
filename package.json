@@ -21,7 +21,8 @@
     "d04": "node d04/index.js",
     "d05": "node d05/index.js",
     "d06": "node d06/index.js",
-    "d07": "node d07/index.js"
+    "d07": "node d07/index.js",
+    "d08": "node d08/index.js"
   },
   "type": "module"
 }
