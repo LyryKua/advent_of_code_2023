@@ -85,7 +85,7 @@ $ npm run d06
 $ npm run d07
 ```
 
-### [--- Day 8: ??? ---](https://adventofcode.com/2023/day/8)
+### [--- Day 8: Haunted Wasteland ---](https://adventofcode.com/2023/day/8)
 
 ```bash
 $ npm run d08
