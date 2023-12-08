@@ -21,7 +21,7 @@
 [![Day](https://badgen.net/badge/05/%E2%98%85%E2%98%85/green)](./d05)
 [![Day](https://badgen.net/badge/06/%E2%98%85%E2%98%85/green)](./d06)
 [![Day](https://badgen.net/badge/07/%E2%98%85%E2%98%85/green)](./d07)
-[![Day](https://badgen.net/badge/08/%E2%98%85%E2%98%86/yellow)](./d08)
+[![Day](https://badgen.net/badge/08/%E2%98%85%E2%98%85/green)](./d08)
 ![Day](https://badgen.net/badge/09/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/10/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/11/%E2%98%86%E2%98%86/gray)
@@ -40,28 +40,35 @@
 ![Day](https://badgen.net/badge/24/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/25/%E2%98%86%E2%98%86/gray)
 
+## Use
+```bash
+git clone git@github.com:LyryKua/advent_of_code_2023.git
+cd advent_of_code_2023
+yarn
+```
+
 ### [--- Day 1: Trebuchet?! ---](https://adventofcode.com/2023/day/1)
 
 ```bash
-$ npm run d01
+npm run d01
 ```
 
 ### [--- Day 2: Cube Conundrum ---](https://adventofcode.com/2023/day/2)
 
 ```bash
-$ npm run d02
+npm run d02
 ```
 
 ### [--- Day 3: Gear Ratios ---](https://adventofcode.com/2023/day/3)
 
 ```bash
-$ npm run d03
+npm run d03
 ```
 
 ### [--- Day 4: Scratchcards ---](https://adventofcode.com/2023/day/4)
 
 ```bash
-$ npm run d04
+npm run d04
 ```
 
 ### [--- Day 5: If You Give A Seed A Fertilizer ---](https://adventofcode.com/2023/day/5)
@@ -70,23 +77,26 @@ $ npm run d04
 > Part 2 is a bit slow. Be patient, I waited 1 hour and 41 minutes for the answer.
 
 ```bash
-$ npm run d05
+npm run d05
 ```
 
 ### [--- Day 6: Wait For It ---](https://adventofcode.com/2023/day/6)
 
 ```bash
-$ npm run d06
+npm run d06
 ```
 
 ### [--- Day 7: Camel Cards ---](https://adventofcode.com/2023/day/7)
 
 ```bash
-$ npm run d07
+npm run d07
 ```
 
 ### [--- Day 8: Haunted Wasteland ---](https://adventofcode.com/2023/day/8)
 
+> [!NOTE]
+> This solution is using [compute-lcm](https://www.npmjs.com/package/compute-lcm) package
+
 ```bash
-$ npm run d08
+npm run d08
 ```

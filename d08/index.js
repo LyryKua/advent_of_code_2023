@@ -1,4 +1,5 @@
-import { example1, example2, input } from './input.js'
+import { example1, example2, example3, input } from './input.js'
+import lcm from 'compute-lcm'
 
 /**
  * @param input {string}
@@ -18,35 +19,52 @@ function parseInput(input) {
 }
 
 /**
+ * @param start {string}
+ * @param part {number}
+ * @returns {boolean}
+ */
+function isFinish(start, part) {
+  if (part === 1) {
+    return start === 'ZZZ'
+  }
+  return start[2] === 'Z'
+}
+
+/**
  * @param input {string}
+ * @param part {number}
  * @returns {number}
  */
-function part1(input) {
+function main(input, part) {
   const { instructions, coordinates } = parseInput(input)
-  let start = 'AAA'
-  let answer = 0
-  while (start !== 'ZZZ') {
-    const instruction = instructions[answer % instructions.length]
-    start = coordinates[start][instruction]
-    answer += 1
+  let starts = part === 1 ? ['AAA'] : Object.keys(coordinates).filter(key => key[2] === 'A')
+  let answers = {}
+  for (let start of starts) {
+    let answer = 0
+    while (!isFinish(start, part)) {
+      const instruction = instructions[answer % instructions.length]
+      start = coordinates[start][instruction]
+      answer += 1
+    }
+    answers[answer] = answer
   }
+  const values = Object.values(answers)
 
-  return answer
+  return part === 1 ? Math.min(...values) : lcm(...values)
 }
 
 console.log('--- Day 8: Haunted Wasteland ---')
-console.log('\npart1:')
-const example1Part1Result = part1(example1)
-console.log('example1:', example1Part1Result, example1Part1Result === 2)
-const example2Part1Result = part1(example2)
-console.log('example2:', example2Part1Result, example2Part1Result === 6)
-const part1Result = part1(input)
-console.log('answer:', part1Result part1Result === 17621)
 
-/*
+console.log('\npart1:')
+const example1Part1Result = main(example1, 1)
+console.log('example1:', example1Part1Result, example1Part1Result === 2)
+const example2Part1Result = main(example2, 1)
+console.log('example2:', example2Part1Result, example2Part1Result === 6)
+const part1Result = main(input, 1)
+console.log('answer:', part1Result, part1Result === 17621)
+
 console.log('\npart2:')
-const examplePart2Result = part2(example)
-console.log('example:', examplePart2Result, examplePart2Result === -1)
-const part2Result = part2(input)
-console.log('answer:', part2Result)
- */
+const example3Part2Result = main(example3, 2)
+console.log('example3:', example3Part2Result, example3Part2Result === 6)
+const part2Result = main(input, 2)
+console.log('answer:', part2Result, part2Result === 20685524831999)

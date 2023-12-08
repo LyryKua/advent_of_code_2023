@@ -24,5 +24,8 @@
     "d07": "node d07/index.js",
     "d08": "node d08/index.js"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "compute-lcm": "^1.1.2"
+  }
 }
