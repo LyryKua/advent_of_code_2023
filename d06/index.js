@@ -1,4 +1,9 @@
-import { example, input } from './input.js'
+import { example } from './input.js'
+import { getInput } from '../lib/index.js'
+import { YEAR } from '../index.js'
+
+const DAY = 6
+const NAME = `--- Day ${DAY}: Wait For It ---`
 
 /**
  * @param input {string}
@@ -45,15 +50,17 @@ function main(input) {
   return answer
 }
 
-console.log('--- Day 6: Wait For It ---')
-console.log('\npart1:')
-const examplePart1Result = main(parseInputPart1(example))
-console.log('example:', examplePart1Result, examplePart1Result === 288)
-const part1Result = main(parseInputPart1(input))
-console.log('answer:', part1Result, part1Result === 633080)
+console.log(NAME)
+getInput(YEAR, DAY).then(input => {
+  console.log('\npart1:')
+  const examplePart1Result = main(parseInputPart1(example))
+  console.log('example:', examplePart1Result, examplePart1Result === 288)
+  const part1Result = main(parseInputPart1(input))
+  console.log('answer:', part1Result, part1Result === 633080)
 
-console.log('\npart2:')
-const examplePart2Result = main(parseInputPart2(example))
-console.log('example:', examplePart2Result, examplePart2Result === 71503)
-const part2Result = main(parseInputPart2(input))
-console.log('answer:', part2Result, part2Result === 20048741)
+  console.log('\npart2:')
+  const examplePart2Result = main(parseInputPart2(example))
+  console.log('example:', examplePart2Result, examplePart2Result === 71503)
+  const part2Result = main(parseInputPart2(input))
+  console.log('answer:', part2Result, part2Result === 20048741)
+})

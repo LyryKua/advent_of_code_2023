@@ -1,5 +1,9 @@
-import { example1, example2, example3, input } from './input.js'
+import { example1, example2, example3 } from './input.js'
 import lcm from 'compute-lcm'
+import { YEAR } from '../index.js'
+import { getInput } from '../lib/index.js'
+
+const DAY = 8
 
 /**
  * @param input {string}
@@ -54,17 +58,18 @@ function main(input, part) {
 }
 
 console.log('--- Day 8: Haunted Wasteland ---')
+getInput(YEAR, DAY).then(input => {
+  console.log('\npart1:')
+  const example1Part1Result = main(example1, 1)
+  console.log('example1:', example1Part1Result, example1Part1Result === 2)
+  const example2Part1Result = main(example2, 1)
+  console.log('example2:', example2Part1Result, example2Part1Result === 6)
+  const part1Result = main(input, 1)
+  console.log('answer:', part1Result, part1Result === 17621)
 
-console.log('\npart1:')
-const example1Part1Result = main(example1, 1)
-console.log('example1:', example1Part1Result, example1Part1Result === 2)
-const example2Part1Result = main(example2, 1)
-console.log('example2:', example2Part1Result, example2Part1Result === 6)
-const part1Result = main(input, 1)
-console.log('answer:', part1Result, part1Result === 17621)
-
-console.log('\npart2:')
-const example3Part2Result = main(example3, 2)
-console.log('example3:', example3Part2Result, example3Part2Result === 6)
-const part2Result = main(input, 2)
-console.log('answer:', part2Result, part2Result === 20685524831999)
+  console.log('\npart2:')
+  const example3Part2Result = main(example3, 2)
+  console.log('example3:', example3Part2Result, example3Part2Result === 6)
+  const part2Result = main(input, 2)
+  console.log('answer:', part2Result, part2Result === 20685524831999)
+})

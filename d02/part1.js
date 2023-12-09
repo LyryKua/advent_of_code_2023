@@ -29,7 +29,7 @@ function getTry(str) {
  * @param input {string}
  * @return {number}
  */
-function main(input) {
+export function part1(input) {
   const lines = parseInput(input)
 
   const parsedLines = lines

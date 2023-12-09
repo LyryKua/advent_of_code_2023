@@ -1,5 +1,9 @@
-import { example, input } from './input.js'
-import { parseInput } from '../lib/index.js'
+import { example } from './input.js'
+import { getInput, parseInput } from '../lib/index.js'
+import { YEAR } from '../index.js'
+
+const DAY = 3
+const NAME ='--- Day 3: Gear Ratios ---'
 
 /**
  * @param char {string}
@@ -382,14 +386,18 @@ function part2(input) {
   return answer
 }
 
+console.log(NAME)
+getInput(YEAR, DAY)
+  .then(input => {
+    console.log('\npart1:')
+    const examplePart1Result = part1(example)
+    console.log('example:', examplePart1Result, examplePart1Result === 4361)
+    const part1Result = part1(input)
+    console.log('answer:', part1Result, part1Result === 544433)
 
-console.log('--- Day 3: Gear Ratios ---')
-console.log('\npart1:')
-const examplePart1Result = part1(example)
-console.log('example:', examplePart1Result, examplePart1Result === 4361)
-console.log('answer:', part1(input))
-
-console.log('\npart2:')
-const examplePart2Result = part2(example)
-console.log('example:', examplePart2Result, examplePart2Result === 467835)
-console.log('answer:', part2(input))
+    console.log('\npart2:')
+    const examplePart2Result = part2(example)
+    console.log('example:', examplePart2Result, examplePart2Result === 467835)
+    const part2Result = part2(input)
+    console.log('answer:', part2Result, part2Result === 76314915)
+  })

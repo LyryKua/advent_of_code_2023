@@ -1,8 +1,11 @@
-import { example, input } from './input.js'
+import { example } from './input.js'
 import { isFourOfKind, isFiveOfKind, isThreeOfKind, isFullHouse, isTwoPair, isOnePair, sortCards } from './lib.js'
+import { YEAR } from '../index.js'
+import { getInput } from '../lib/index.js'
 
 const ALPHABET_PART1 = '23456789TJQKA'
 const ALPHABET_PART2 = 'J23456789TQKA'
+const DAY = 7
 
 /**
  * @param hand {string}
@@ -113,14 +116,17 @@ function part2(input) {
 }
 
 console.log('--- Day 7: Camel Cards ---')
-console.log('\npart1:')
-const examplePart1Result = part1(example)
-console.log('example:', examplePart1Result, examplePart1Result === 6440)
-const part1Result = part1(input)
-console.log('answer:', part1Result, part1Result === 247823654)
+getInput(YEAR, DAY)
+  .then(input => {
+    console.log('\npart1:')
+    const examplePart1Result = part1(example)
+    console.log('example:', examplePart1Result, examplePart1Result === 6440)
+    const part1Result = part1(input)
+    console.log('answer:', part1Result, part1Result === 247823654)
 
-console.log('\npart2:')
-const examplePart2Result = part2(example)
-console.log('example:', examplePart2Result, examplePart2Result === 5905)
-const part2Result = part2(input)
-console.log('answer:', part2Result, part2Result === 245461700)
+    console.log('\npart2:')
+    const examplePart2Result = part2(example)
+    console.log('example:', examplePart2Result, examplePart2Result === 5905)
+    const part2Result = part2(input)
+    console.log('answer:', part2Result, part2Result === 245461700)
+  })

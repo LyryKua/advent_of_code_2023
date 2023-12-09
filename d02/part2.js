@@ -25,7 +25,7 @@ function getTry(str) {
  * @param input {string}
  * @return {number}
  */
-function main(input) {
+export function part2(input) {
   const lines = parseInput(input)
 
   const parsedLines = lines
@@ -49,8 +49,3 @@ function main(input) {
     return maxRed * maxGreen * maxBlue
   }).reduce((acc, cur) => acc + cur)
 }
-
-console.log('\npart2:')
-const exampleResult = main(example)
-console.log('example:', exampleResult, exampleResult === 2286)
-console.log('answer:', main(input))

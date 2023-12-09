@@ -1,4 +1,9 @@
-import { example, input } from './input.js'
+import { example } from './input.js'
+import { getInput } from '../lib/index.js'
+import { YEAR } from '../index.js'
+
+const NAME = '--- Day 5: If You Give A Seed A Fertilizer ---'
+const DAY = 5
 
 /**
  * @param input {string}
@@ -43,11 +48,6 @@ function originToTarget(x, target, origin, range) {
  * @returns {number}
  */
 function oneToAnother(x, map) {
-  /*
-  const soils = map.map(row => originToTarget(x, ...row)).filter(it => it !== x)
-
-  let y = soils.length === 1 ? soils[0] : x
-   */
   let y = x
   for (const row of map) {
     const target = originToTarget(x, ...row)
@@ -124,13 +124,17 @@ function part2(input) {
   return min
 }
 
-console.log('--- Day 5: If You Give A Seed A Fertilizer ---')
-console.log('\npart1:')
-const examplePart1Result = part1(example)
-console.log('example:', examplePart1Result, examplePart1Result === 35)
-console.log('answer:', part1(input))
+console.log(NAME)
+getInput(YEAR, DAY).then(input => {
+  console.log('\npart1:')
+  const examplePart1Result = part1(example)
+  console.log('example:', examplePart1Result, examplePart1Result === 35)
+  const part1Result = part1(input)
+  console.log('answer:', part1Result, part1Result === 379811651)
 
-console.log('\npart2:')
-const examplePart2Result = part2(example)
-console.log('example:', examplePart2Result, examplePart2Result === 46)
-console.log('answer:', part2(input))
+  console.log('\npart2:')
+  const examplePart2Result = part2(example)
+  console.log('example:', examplePart2Result, examplePart2Result === 46)
+  const part2Result = part2(input)
+  console.log('answer:', part2Result, part2Result === 27992443)
+})

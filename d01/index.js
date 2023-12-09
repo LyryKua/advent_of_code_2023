@@ -1,5 +1,9 @@
-import { parseInput } from '../lib/index.js'
-import { examplePart1, examplePart2, part1 } from './input.js'
+import { parseInput, getInput } from '../lib/index.js'
+import { examplePart1, examplePart2 } from './input.js'
+import { YEAR } from '../index.js'
+
+const DAY = 1
+const NAME = `--- Day ${DAY}: Trebuchet?! ---`
 
 /**
  * @param str {string}
@@ -19,20 +23,22 @@ function getNumberChar(str) {
 }
 
 /**
- * For `part1` you need replace this function with this:
- * @example
- * function parseLine(line) {
- *   const numbers = line.match(/\d/g)
- *   const firstChar = String(numbers.at(0))
- *   const lastChar = String(numbers.at(-1))
- *
- *   return parseInt(firstChar + lastChar)
- * }
- *
  * @param line {string}
  * @returns {number}
  */
-function parseLine(line) {
+function parseLinePart1(line) {
+  const numbers = line.match(/\d/g)
+  const firstChar = String(numbers.at(0))
+  const lastChar = String(numbers.at(-1))
+
+  return parseInt(firstChar + lastChar)
+}
+
+/**
+ * @param line {string}
+ * @returns {number}
+ */
+function parseLinePart2(line) {
   const possibleFirstNumbers = line.match(/(\d|one|two|three|four|five|six|seven|eight|nine)/g)
   const firstChar = getNumberChar(possibleFirstNumbers.at(0))
 
@@ -45,22 +51,29 @@ function parseLine(line) {
 
 /**
  * @param input {string}
+ * @param part {number}
  * @return {number}
  */
-function main(input) {
+function main(input, part) {
   const lines = parseInput(input)
+  const parseLine = part === 1 ? parseLinePart1 : parseLinePart2
 
   return lines.map(parseLine).reduce((acc, cur) => acc + cur, 0)
 }
 
-console.log('--- Day 1: Trebuchet?! ---')
-console.log('\npart1:')
-const examplePart1Result = main(examplePart1)
-console.log('example:', examplePart1Result, examplePart1Result === 142)
-console.log('answer:', main(part1))
+console.log(NAME)
+getInput(YEAR, DAY)
+  .then(input => {
+    console.log('\npart1:')
+    const examplePart1Result = main(examplePart1, 1)
+    console.log('example:', examplePart1Result, examplePart1Result === 142)
+    const part1Result = main(input, 1)
+    console.log('answer:', part1Result, part1Result === 54632)
 
-console.log('\npart2:')
-const examplePart2Result = main(examplePart2)
-console.log('example:', examplePart2Result, examplePart2Result === 281)
-console.log('answer:', main(part1))
+    console.log('\npart2:')
+    const examplePart2Result = main(examplePart2, 2)
+    console.log('example:', examplePart2Result, examplePart2Result === 281)
+    const part2Result = main(input, 2)
+    console.log('answer:', part2Result, part2Result === 54019)
+  })
 

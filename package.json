@@ -13,10 +13,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "d01": "node ./d01/index.js",
-    "d02": "node ./d02/part1.js && node ./d02/part2.js",
-    "d02:part1": "node ./d02/part1.js",
-    "d02:part2": "node ./d02/part2.js",
+    "d01": "node d01/index.js",
+    "d02": "node d02/index.js",
     "d03": "node d03/index.js",
     "d04": "node d04/index.js",
     "d05": "node d05/index.js",
@@ -27,6 +25,8 @@
   },
   "type": "module",
   "dependencies": {
-    "compute-lcm": "^1.1.2"
+    "axios": "^1.6.2",
+    "compute-lcm": "^1.1.2",
+    "dotenv": "^16.3.1"
   }
 }
