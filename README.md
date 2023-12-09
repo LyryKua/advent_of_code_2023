@@ -14,6 +14,7 @@
 
 ## Solutions
 
+[//]: # (https://badgen.net/badge/XX/%E2%98%85%E2%98%86/yellow)
 [![Day](https://badgen.net/badge/01/%E2%98%85%E2%98%85/green)](./d01)
 [![Day](https://badgen.net/badge/02/%E2%98%85%E2%98%85/green)](./d02)
 [![Day](https://badgen.net/badge/03/%E2%98%85%E2%98%85/green)](./d03)
@@ -22,7 +23,7 @@
 [![Day](https://badgen.net/badge/06/%E2%98%85%E2%98%85/green)](./d06)
 [![Day](https://badgen.net/badge/07/%E2%98%85%E2%98%85/green)](./d07)
 [![Day](https://badgen.net/badge/08/%E2%98%85%E2%98%85/green)](./d08)
-[![Day](https://badgen.net/badge/09/%E2%98%86%E2%98%86/gray)](./d09)
+[![Day](https://badgen.net/badge/09/%E2%98%85%E2%98%86/yellow)](./d09)
 ![Day](https://badgen.net/badge/10/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/11/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/12/%E2%98%86%E2%98%86/gray)
