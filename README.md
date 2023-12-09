@@ -48,6 +48,12 @@ cd advent_of_code_2023
 yarn
 ```
 
+> [!NOTE]
+> before running any day, you need to create a `.env` file at the root of the project and add your session cookie from
+> [adventofcode.com](https://adventofcode.com/2023) in it. See [example](./.env.example) for more
+
+```bash
+
 ### [--- Day 1: Trebuchet?! ---](https://adventofcode.com/2023/day/1)
 
 ```bash
