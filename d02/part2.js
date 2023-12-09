@@ -1,4 +1,3 @@
-import { example, input } from './input.js'
 import { parseInput } from '../lib/index.js'
 
 /**

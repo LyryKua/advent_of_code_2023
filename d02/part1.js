@@ -1,4 +1,3 @@
-import { example, input } from './input.js'
 import { parseInput } from '../lib/index.js'
 
 const MAX_RED = 12
@@ -53,9 +52,3 @@ export function part1(input) {
     return flag ? gameNumber : 0
   }).reduce((acc, cur) => acc + cur)
 }
-
-console.log('--- Day 2: Cube Conundrum ---')
-console.log('\npart1:')
-const exampleResult = main(example)
-console.log('example:', exampleResult, exampleResult === 8)
-console.log('answer:', main(input))
