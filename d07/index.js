@@ -1,4 +1,3 @@
-import { example } from './input.js'
 import { isFourOfKind, isFiveOfKind, isThreeOfKind, isFullHouse, isTwoPair, isOnePair, sortCards } from './lib.js'
 import { YEAR } from '../index.js'
 import { getInput } from '../lib/index.js'
@@ -115,18 +114,14 @@ function part2(input) {
   return sortedCards.reduce((acc, card, currentIndex) => acc + card.bid * (currentIndex + 1), 0)
 }
 
-console.log('--- Day 7: Camel Cards ---')
+console.log('\n\n--- Day 7: Camel Cards ---')
 getInput(YEAR, DAY)
   .then(input => {
-    console.log('\npart1:')
-    const examplePart1Result = part1(example)
-    console.log('example:', examplePart1Result, examplePart1Result === 6440)
+    console.log('part1:')
     const part1Result = part1(input)
     console.log('answer:', part1Result, part1Result === 247823654)
 
     console.log('\npart2:')
-    const examplePart2Result = part2(example)
-    console.log('example:', examplePart2Result, examplePart2Result === 5905)
     const part2Result = part2(input)
     console.log('answer:', part2Result, part2Result === 245461700)
   })

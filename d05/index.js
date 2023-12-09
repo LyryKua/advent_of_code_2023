@@ -1,8 +1,7 @@
-import { example } from './input.js'
 import { getInput } from '../lib/index.js'
 import { YEAR } from '../index.js'
 
-const NAME = '--- Day 5: If You Give A Seed A Fertilizer ---'
+const NAME = '\n\n--- Day 5: If You Give A Seed A Fertilizer ---'
 const DAY = 5
 
 /**
@@ -126,15 +125,11 @@ function part2(input) {
 
 console.log(NAME)
 getInput(YEAR, DAY).then(input => {
-  console.log('\npart1:')
-  const examplePart1Result = part1(example)
-  console.log('example:', examplePart1Result, examplePart1Result === 35)
+  console.log('part1:')
   const part1Result = part1(input)
   console.log('answer:', part1Result, part1Result === 379811651)
 
   console.log('\npart2:')
-  const examplePart2Result = part2(example)
-  console.log('example:', examplePart2Result, examplePart2Result === 46)
   const part2Result = part2(input)
   console.log('answer:', part2Result, part2Result === 27992443)
 })

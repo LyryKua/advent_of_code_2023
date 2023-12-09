@@ -1,4 +1,3 @@
-import { example } from './input.js'
 import { getInput, parseInput } from '../lib/index.js'
 import { YEAR } from '../index.js'
 
@@ -62,18 +61,14 @@ function main(input, part) {
   return answer
 }
 
-console.log('--- Day 9: Mirage Maintenance ---')
+console.log('\n\n--- Day 9: Mirage Maintenance ---')
 getInput(YEAR, DAY)
   .then(input => {
-    console.log('\npart1:')
-    const examplePart1Result = main(example, 1)
-    console.log('example:', examplePart1Result, examplePart1Result === 114)
+    console.log('part1:')
     const part1Result = main(input, 1)
     console.log('answer:', part1Result, part1Result === 1939607039)
 
     console.log('\npart2:')
-    const examplePart2Result = main(example, 2)
-    console.log('example:', examplePart2Result, examplePart2Result === 2)
     const part2Result = main(input, 2)
     console.log('answer:', part2Result, part2Result === 1041)
   })

@@ -1,9 +1,8 @@
 import { parseInput, getInput } from '../lib/index.js'
-import { examplePart1, examplePart2 } from './input.js'
 import { YEAR } from '../index.js'
 
 const DAY = 1
-const NAME = `--- Day ${DAY}: Trebuchet?! ---`
+const NAME = `\n\n--- Day ${DAY}: Trebuchet?! ---`
 
 /**
  * @param str {string}
@@ -64,15 +63,11 @@ function main(input, part) {
 console.log(NAME)
 getInput(YEAR, DAY)
   .then(input => {
-    console.log('\npart1:')
-    const examplePart1Result = main(examplePart1, 1)
-    console.log('example:', examplePart1Result, examplePart1Result === 142)
+    console.log('part1:')
     const part1Result = main(input, 1)
     console.log('answer:', part1Result, part1Result === 54632)
 
     console.log('\npart2:')
-    const examplePart2Result = main(examplePart2, 2)
-    console.log('example:', examplePart2Result, examplePart2Result === 281)
     const part2Result = main(input, 2)
     console.log('answer:', part2Result, part2Result === 54019)
   })
