@@ -22,7 +22,7 @@
 [![Day](https://badgen.net/badge/06/%E2%98%85%E2%98%85/green)](./d06)
 [![Day](https://badgen.net/badge/07/%E2%98%85%E2%98%85/green)](./d07)
 [![Day](https://badgen.net/badge/08/%E2%98%85%E2%98%85/green)](./d08)
-![Day](https://badgen.net/badge/09/%E2%98%86%E2%98%86/gray)
+[![Day](https://badgen.net/badge/09/%E2%98%86%E2%98%86/gray)](./d09)
 ![Day](https://badgen.net/badge/10/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/11/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/12/%E2%98%86%E2%98%86/gray)
@@ -99,4 +99,10 @@ npm run d07
 
 ```bash
 npm run d08
+```
+
+### [--- Day 9: Mirage Maintenance ---](https://adventofcode.com/2023/day/9)
+
+```bash
+npm run d09
 ```
