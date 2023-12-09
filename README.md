@@ -52,30 +52,28 @@ yarn
 > before running any day, you need to create a `.env` file at the root of the project and add your session cookie from
 > [adventofcode.com](https://adventofcode.com/2023) in it. See [example](./.env.example) for more
 
-```bash
-
 ### [--- Day 1: Trebuchet?! ---](https://adventofcode.com/2023/day/1)
 
 ```bash
-npm run d01
+yarn d01
 ```
 
 ### [--- Day 2: Cube Conundrum ---](https://adventofcode.com/2023/day/2)
 
 ```bash
-npm run d02
+yarn d02
 ```
 
 ### [--- Day 3: Gear Ratios ---](https://adventofcode.com/2023/day/3)
 
 ```bash
-npm run d03
+yarn d03
 ```
 
 ### [--- Day 4: Scratchcards ---](https://adventofcode.com/2023/day/4)
 
 ```bash
-npm run d04
+yarn d04
 ```
 
 ### [--- Day 5: If You Give A Seed A Fertilizer ---](https://adventofcode.com/2023/day/5)
@@ -84,19 +82,19 @@ npm run d04
 > Part 2 is a bit slow. Be patient, I waited 1 hour and 41 minutes for the answer.
 
 ```bash
-npm run d05
+yarn d05
 ```
 
 ### [--- Day 6: Wait For It ---](https://adventofcode.com/2023/day/6)
 
 ```bash
-npm run d06
+yarn d06
 ```
 
 ### [--- Day 7: Camel Cards ---](https://adventofcode.com/2023/day/7)
 
 ```bash
-npm run d07
+yarn d07
 ```
 
 ### [--- Day 8: Haunted Wasteland ---](https://adventofcode.com/2023/day/8)
@@ -105,11 +103,11 @@ npm run d07
 > This solution is using [compute-lcm](https://www.npmjs.com/package/compute-lcm) package
 
 ```bash
-npm run d08
+yarn d08
 ```
 
 ### [--- Day 9: Mirage Maintenance ---](https://adventofcode.com/2023/day/9)
 
 ```bash
-npm run d09
+yarn d09
 ```
