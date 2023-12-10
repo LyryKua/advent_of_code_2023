@@ -63,6 +63,17 @@ export function isStart(cell) {
 }
 
 /**
+ * @param a {string}
+ * @returns {boolean}
+ */
+export function isCorner(a) {
+  return isNorthAndEast(a)
+    || isNorthAndWest(a)
+    || isSouthAndWest(a)
+    || isSouthAndEast(a)
+}
+
+/**
  * @param map {{cell: string, visited: boolean}[][]}
  * @returns {{x: number, y: number}}
  */
@@ -77,158 +88,6 @@ export function findStart(map) {
     }
   }
   return { x: -1, y: -1 }
-}
-
-/**
- * @param a {{x: number, y: number}}
- * @param b {{x: number, y: number}}
- * @returns {boolean}
- */
-export function isSameTile(a, b) {
-  return a.x === b.x && a.y === b.y
-}
-
-/**
- * @param map {{cell: string, visited: boolean}[][]}
- * @param cell {{x: number, y: number}}
- * @returns {{x: number, y: number}[]}
- */
-export function getConnections(map, { x, y }) {
-  const cell = map[y][x]
-  const top = y - 1 >= 0 ? { y: y - 1, x } : undefined
-  const right = x + 1 <= map[0].length - 1 ? { y: y, x: x + 1 } : undefined
-  const bottom = y + 1 <= map.length ? { y: y + 1, x } : undefined
-  const left = x - 1 >= 0 ? { y: y, x: x - 1 } : undefined
-  const connections = []
-  if (isStart(cell)) {
-    // top
-    if (top) {
-      const cell = map[top.y][top.x]
-      if (isNorthAndSouth(cell) || isSouthAndEast(cell) || isSouthAndWest(cell)) {
-        connections.push(top)
-      }
-    }
-    // bottom
-    if (bottom) {
-      const cell = map[bottom.y][bottom.x]
-      if (isNorthAndSouth(cell) || isNorthAndEast(cell) || isNorthAndWest(cell)) {
-        connections.push(bottom)
-      }
-    }
-    // left
-    if (left) {
-      const cell = map[left.y][left.x]
-      if (isEastAndWest(cell) || isSouthAndEast(cell) || isNorthAndEast(cell)) {
-        connections.push(left)
-      }
-    }
-    // right
-    if (right) {
-      const cell = map[right.y][right.x]
-      if (isEastAndWest(cell) || isNorthAndWest(cell) || isSouthAndWest(cell)) {
-        connections.push(right)
-      }
-    }
-  }
-
-  if (isNorthAndSouth(cell)) {
-    // top
-    if (top) {
-      const cell = map[top.y][top.x]
-      if (isNorthAndSouth(cell) || isSouthAndEast(cell) || isSouthAndWest(cell)) {
-        connections.push(top)
-      }
-    }
-    // bottom
-    if (bottom) {
-      const cell = map[bottom.y][bottom.x]
-      if (isNorthAndSouth(cell) || isNorthAndEast(cell) || isNorthAndWest(cell)) {
-        connections.push(bottom)
-      }
-    }
-  }
-  if (isEastAndWest(cell)) {
-    // left
-    if (left) {
-      const cell = map[left.y][left.x]
-      if (isEastAndWest(cell) || isSouthAndEast(cell) || isNorthAndEast(cell)) {
-        connections.push(left)
-      }
-    }
-    // right
-    if (right) {
-      const cell = map[right.y][right.x]
-      if (isEastAndWest(cell) || isNorthAndWest(cell) || isSouthAndWest(cell)) {
-        connections.push(right)
-      }
-    }
-  }
-  if (isNorthAndEast(cell)) {
-    // top
-    if (top) {
-      const cell = map[top.y][top.x]
-      if (isNorthAndSouth(cell) || isSouthAndEast(cell) || isSouthAndWest(cell)) {
-        connections.push(top)
-      }
-    }
-    // right
-    if (right) {
-      const cell = map[right.y][right.x]
-      if (isEastAndWest(cell) || isNorthAndWest(cell) || isSouthAndWest(cell)) {
-        connections.push(right)
-      }
-    }
-  }
-  if (isNorthAndWest(cell)) {
-    // top
-    if (top) {
-      const cell = map[top.y][top.x]
-      if (isNorthAndSouth(cell) || isSouthAndEast(cell) || isSouthAndWest(cell)) {
-        connections.push(top)
-      }
-    }
-    // left
-    if (left) {
-      const cell = map[left.y][left.x]
-      if (isEastAndWest(cell) || isSouthAndEast(cell) || isNorthAndEast(cell)) {
-        connections.push(left)
-      }
-    }
-  }
-  if (isSouthAndWest(cell)) {
-    // bottom
-    if (bottom) {
-      const cell = map[bottom.y][bottom.x]
-      if (isNorthAndSouth(cell) || isNorthAndEast(cell) || isNorthAndWest(cell)) {
-        connections.push(bottom)
-      }
-    }
-    // left
-    if (left) {
-      const cell = map[left.y][left.x]
-      if (isEastAndWest(cell) || isSouthAndEast(cell) || isNorthAndEast(cell)) {
-        connections.push(left)
-      }
-    }
-  }
-  if (isSouthAndEast(cell)) {
-    // bottom
-    if (bottom) {
-      const cell = map[bottom.y][bottom.x]
-      if (isNorthAndSouth(cell) || isNorthAndEast(cell) || isNorthAndWest(cell)) {
-        connections.push(bottom)
-      }
-    }
-    // right
-    if (right) {
-      const cell = map[right.y][right.x]
-      if (isEastAndWest(cell) || isNorthAndWest(cell) || isSouthAndWest(cell)) {
-        connections.push(right)
-      }
-    }
-  }
-
-  return connections
 }
 
 /**
