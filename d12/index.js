@@ -6,15 +6,27 @@ const DAY = 12
 const NAME = `\n\n--- Day 12: Hot Springs ---`
 
 /**
+ * @param nbr {number}
+ * @param str {string}
+ * @param separator {string}
+ * @returns {string}
+ */
+function repeat(nbr, str, separator) {
+  return Array(nbr).fill(str).join(separator)
+}
+
+/**
  * @param input {string}
+ * @param part {number}
  * @returns {[string, number[]][]}
  */
-function parseInput(input) {
+function parseInput(input, part) {
+  const nbr = part === 1 ? 1 : 5
   return input.trim().split('\n')
     .map(line => {
       const [action, rest] = line.split(' ')
-      const value = rest.split(',').map(it => parseInt(it))
-      return [action, value]
+      const value = repeat(nbr, rest, ',').split(',').map(it => parseInt(it))
+      return [repeat(nbr, action, '?'), value]
     })
 }
 
@@ -47,11 +59,12 @@ function isEquals(arr1, arr2) {
 
 /**
  * @param input {string}
+ * @param part {number}
  * @returns {number}
  */
-function main(input) {
+function main(input, part) {
   let answer = 0
-  const rows = parseInput(input)
+  const rows = parseInput(input, part)
   for (const [spring, numbers] of rows) {
     const variant = iterate(spring)
       .map(it => it.replaceAll(/\.+/g, '.')
@@ -69,13 +82,14 @@ console.log(NAME)
 getInput(YEAR, DAY)
   .then(input => {
     console.log('part1:')
-// const exampleResult = main(EXAMPLE)
-    const exampleResult = main(EXAMPLE)
+// const exampleResult = main(EXAMPLE, 1)
+    const exampleResult = main(ONE_LINE, 1)
     console.log('example:', exampleResult, exampleResult === 21)
-    const part1Result = main(input)
-    console.log('answer:', part1Result)
+    // const part1Result = main(input, 1)
+    // console.log('answer:', part1Result)
 //
-// console.log('\npart2:')
-// const part2Result = main(input)
+    console.log('\npart2:')
+    const part2Result = main(ONE_LINE, 2)
+// const part2Result = main(input, 2)
 // console.log('answer:', part2Result)
   })
