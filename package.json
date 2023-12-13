@@ -25,6 +25,7 @@
     "d10": "node d10/index.js",
     "d11": "node d11/index.js",
     "d12": "node d12/index.js",
+    "d13": "node d13/index.js",
     "all": "node d01/index.js && node d02/index.js && node d03/index.js && node d04/index.js && node d05/index.js && node d06/index.js && node d07/index.js && node d08/index.js && node d09/index.js"
   },
   "type": "module",

@@ -52,7 +52,6 @@ function getNext(map, cell) {
  */
 function printMap(map) {
   map.forEach(row => console.log(row.join('')))
-  console.log('\n----\n')
 }
 
 /**
