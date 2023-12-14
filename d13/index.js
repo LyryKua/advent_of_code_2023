@@ -27,13 +27,20 @@ function parseInput(input) {
  * @param bottom {string[]}
  */
 function isHorizontalReflection(top, bottom) {
-  let i = top.length - 1, j = 0
+  let i = top.length - 1, j = 0, numberOfSmudge = 0
   while (i >= 0 && j < bottom.length) {
-    if (top[i] !== bottom[j]) return false
+    const topNbr = str2Dec(top[i])
+    const bottomNbr = str2Dec(bottom[j])
+    const xor = topNbr ^ bottomNbr
+    if ((xor & (xor - 1)) !== 0 && topNbr !== bottomNbr) return false
+    if (xor !== 0 && (xor & (xor - 1)) === 0) {
+      numberOfSmudge += 1
+    }
+    if (numberOfSmudge > 1) return false
     i -= 1
     j += 1
   }
-  return true
+  return numberOfSmudge === 1
 }
 
 /**
@@ -41,15 +48,22 @@ function isHorizontalReflection(top, bottom) {
  * @param right {string[]}
  */
 function isVerticalReflection(left, right) {
-  let i = left[0].length - 1, j = 0
+  let i = left[0].length - 1, j = 0, numberOfSmudge = 0
   while (i >= 0 && j < right[0].length) {
     const leftStr = left.map(it => it[i]).join('')
+    const leftNbr = str2Dec(leftStr)
     const rightStr = right.map(it => it[j]).join('')
-    if (leftStr !== rightStr) return false
+    const rightNbr = str2Dec(rightStr)
+    const xor = leftNbr ^ rightNbr
+    if ((xor & (xor - 1)) !== 0 && leftNbr !== rightNbr) return false
+    if (xor !== 0 && (xor & (xor - 1)) === 0) {
+      numberOfSmudge += 1
+    }
+    if (numberOfSmudge > 1) return false
     i -= 1
     j += 1
   }
-  return true
+  return numberOfSmudge === 1
 }
 
 /**
@@ -62,7 +76,7 @@ function findHorizontalMirror(map) {
     const top = map.slice(0, i + 1)
     const bottom = map.slice(i + 1)
     if (isHorizontalReflection(top, bottom)) {
-      answer += top.length * 100
+      return top.length * 100
     }
   }
   return answer
