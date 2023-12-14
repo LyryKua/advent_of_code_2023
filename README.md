@@ -26,9 +26,9 @@
 [![Day](https://badgen.net/badge/09/%E2%98%85%E2%98%85/green)](./d09)
 [![Day](https://badgen.net/badge/10/%E2%98%85%E2%98%85/green)](./d10)
 [![Day](https://badgen.net/badge/11/%E2%98%85%E2%98%85/green)](./d11)
-[![Day](https://badgen.net/badge/12/%E2%98%86%E2%98%86/gray)](./d12)
-![Day](https://badgen.net/badge/13/%E2%98%86%E2%98%86/gray)
-![Day](https://badgen.net/badge/14/%E2%98%86%E2%98%86/gray)
+[![Day](https://badgen.net/badge/12/%E2%98%85%E2%98%86/yellow)](./d12)
+[![Day](https://badgen.net/badge/13/%E2%98%85%E2%98%85/green)](./d13)
+[![Day](https://badgen.net/badge/14/%E2%98%86%E2%98%86/gray)](./d14)
 ![Day](https://badgen.net/badge/15/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/16/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/17/%E2%98%86%E2%98%86/gray)
@@ -127,5 +127,17 @@ yarn d11
 ### [--- Day 12: Hot Springs ---](https://adventofcode.com/2023/day/12)
 
 ```bash
-yarn d11
+yarn d12
+```
+
+### [--- Day 13: Point of Incidence ---](https://adventofcode.com/2023/day/13)
+
+```bash
+yarn d13
+```
+
+### [--- Day 14: Parabolic Reflector Dish ---](https://adventofcode.com/2023/day/14)
+
+```bash
+yarn d14
 ```
