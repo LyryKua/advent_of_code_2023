@@ -1,6 +1,5 @@
 import { getInput } from '../lib/index.js'
 import { YEAR } from '../index.js'
-import { EXAMPLE } from './input.js'
 
 const DAY = 16
 const NAME = `\n\n--- Day 16: The Floor Will Be Lava ---`
@@ -92,17 +91,68 @@ function traceMap(start, map) {
 }
 
 /**
- * @param input {string}
+ * @param map {{char: string, visited: number}[][]}
  * @returns {number}
  */
-function main(input) {
+function countHashes(map) {
   let ans = 0
-  const map = parseInput(input)
-  const start = { x: 0, y: 0, direction: 'right' }
-  traceMap(start, map)
   for (let mapElement of map) {
     ans += mapElement.filter(it => it.visited > 0).length
   }
+  return ans
+}
+
+/**
+ * @param input {string}
+ * @param part {number}
+ * @returns {number}
+ */
+function main(input, part) {
+  let ans = 0
+  const map = parseInput(input)
+  if (part === 1) {
+    const start = { x: 0, y: 0, direction: 'right' }
+    traceMap(start, map)
+    ans = countHashes(map)
+  } else {
+    for (let i = 0; i < map[0].length; i++) {
+      const copy = parseInput(input)
+      const s = { x: i, y: 0, direction: 'down' }
+      traceMap(s, copy)
+      const tmp = countHashes(copy)
+      if (tmp > ans) {
+        ans = tmp
+      }
+    }
+    for (let i = 0; i < map.length; i++) {
+      const copy = parseInput(input)
+      const s = { x: 0, y: i, direction: 'right' }
+      traceMap(s, copy)
+      const tmp = countHashes(copy)
+      if (tmp > ans) {
+        ans = tmp
+      }
+    }
+    for (let i = 0; i < map[0].length; i++) {
+      const copy = parseInput(input)
+      const s = { x: i, y: map.length - 1, direction: 'up' }
+      traceMap(s, copy)
+      const tmp = countHashes(copy)
+      if (tmp > ans) {
+        ans = tmp
+      }
+    }
+    for (let i = 0; i < map.length; i++) {
+      const copy = parseInput(input)
+      const s = { x: map[0].length - 1, y: i, direction: 'left' }
+      traceMap(s, copy)
+      const tmp = countHashes(copy)
+      if (tmp > ans) {
+        ans = tmp
+      }
+    }
+  }
+
 
   return ans
 }
@@ -111,12 +161,10 @@ console.log(NAME)
 getInput(YEAR, DAY)
   .then(input => {
     console.log('part1:')
-// const exampleResult = main(EXAMPLE)
-// console.log('example:', exampleResult, exampleResult === 1)
-    const part1Result = main(input)
+    const part1Result = main(input, 1)
     console.log('answer:', part1Result)
-//
-//   console.log('\npart2:')
-//   const part2Result = main(input)
-//   console.log('answer:', part2Result)
+
+    console.log('\npart2:')
+    const part2Result = main(input, 2)
+    console.log('answer:', part2Result)
   })
