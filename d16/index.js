@@ -7,11 +7,21 @@ const NAME = `\n\n--- Day 16: The Floor Will Be Lava ---`
 
 /**
  * @param input {string}
+ * @returns {string[][]}
+ */
+function parseInput(input) {
+  return input.trim().split('\n').map(it => it.split(''))
+}
+
+/**
+ * @param input {string}
  * @returns {number}
  */
 function main(input) {
+  let ans = 0
+  const map = parseInput(input)
 
-  return input.length
+  return ans
 }
 
 console.log(NAME)
