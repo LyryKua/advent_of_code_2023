@@ -7,15 +7,15 @@ const NAME = `\n\n--- Day 16: The Floor Will Be Lava ---`
 
 /**
  * @param input {string}
- * @returns {{char: string, visited: boolean}[][]}
+ * @returns {{char: string, visited: number}[][]}
  */
 function parseInput(input) {
-  return input.trim().split('\n').map(it => it.split('').map(it => ({ char: it, visited: false })))
+  return input.trim().split('\n').map(it => it.split('').map(it => ({ char: it, visited: 0 })))
 }
 
 /**
  * @param dot {{x: number, y: number}}
- * @param map {{char: string, visited: boolean}[][]}
+ * @param map {{char: string, visited: number}[][]}
  * @returns {boolean}
  */
 function isInside({ x, y }, map) {
@@ -35,7 +35,7 @@ function getNewStart({ x, y, direction }) {
 
 /**
  * @param dot{{x: number, y: number, direction: string}}
- * @param map {{char: string, visited: boolean}[][]}
+ * @param map {{char: string, visited: number}[][]}
  * @returns {boolean}
  */
 function isVerticalSplit({ x, y, direction }, map) {
@@ -46,7 +46,7 @@ function isVerticalSplit({ x, y, direction }, map) {
 
 /**
  * @param dot{{x: number, y: number, direction: string}}
- * @param map {{char: string, visited: boolean}[][]}
+ * @param map {{char: string, visited: number}[][]}
  * @returns {boolean}
  */
 function isHorizontalSplit({ x, y, direction }, map) {
@@ -57,15 +57,14 @@ function isHorizontalSplit({ x, y, direction }, map) {
 
 /**
  * @param start {{x: number, y: number, direction: string}}
- * @param map {{char: string, visited: boolean}[][]}
+ * @param map {{char: string, visited: number}[][]}
  */
 function traceMap(start, map) {
   let newStart = { ...start }
   while (isInside(newStart, map)) {
-    console.log(newStart)
     const { char, visited } = map[newStart.y][newStart.x]
-    if (visited && char !== '/' && char !== '\\') return
-    map[newStart.y][newStart.x].visited = true
+    if ((char === '|' || char === '-') && visited >= 2) return
+    map[newStart.y][newStart.x].visited += 1
     if (isVerticalSplit(newStart, map)) {
       traceMap(getNewStart({ ...newStart, direction: 'up' }), map)
       traceMap(getNewStart({ ...newStart, direction: 'down' }), map)
@@ -100,22 +99,24 @@ function main(input) {
   let ans = 0
   const map = parseInput(input)
   const start = { x: 0, y: 0, direction: 'right' }
-  // const start = { x: 4, y: 7, direction: 'right' }
   traceMap(start, map)
+  for (let mapElement of map) {
+    ans += mapElement.filter(it => it.visited > 0).length
+  }
 
   return ans
 }
 
 console.log(NAME)
-// getInput(YEAR, DAY)
-//   .then(input => {
-console.log('part1:')
-const exampleResult = main(EXAMPLE)
-console.log('example:', exampleResult, exampleResult === 1)
-// const part1Result = main(input)
-// console.log('answer:', part1Result)
+getInput(YEAR, DAY)
+  .then(input => {
+    console.log('part1:')
+// const exampleResult = main(EXAMPLE)
+// console.log('example:', exampleResult, exampleResult === 1)
+    const part1Result = main(input)
+    console.log('answer:', part1Result)
 //
 //   console.log('\npart2:')
 //   const part2Result = main(input)
 //   console.log('answer:', part2Result)
-// })
+  })
